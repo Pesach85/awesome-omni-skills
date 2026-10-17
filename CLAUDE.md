@@ -46,7 +46,7 @@
 - Categoria inventario: fork catalogo skill.
 
 ### Architettura (contesto)
-_Revisione 2026-10-16, metodo Cum scire, fonte GitHub `Pesach85/awesome-omni-skills` @ `c3af0048b70a` (sola lettura)._
+_Revisione 2026-10-16, metodo Cum scire, fonte GitHub `Pesach85/awesome-omni-skills` @ `c3af0048b70a` (sola lettura); riverifica puntuale 2026-10-18 @ `6bce405`._
 - **Stack**: monorepo Node ≥22 (npm workspaces, vitest) + pipeline Python di generazione/validazione [VERIFICATO: `package.json` engines/scripts, `docs/ARCHITECTURE.md` @`c3af0048b70a`]
 - **Struttura** [VERIFICATO: albero @`c3af0048b70a`]:
   - `skills/` (~3000 voci) e `skills_omni/` (~1600): catalogo `SKILL.md` (sorgente) e derivati curati
@@ -55,7 +55,7 @@ _Revisione 2026-10-16, metodo Cum scire, fonte GitHub `Pesach85/awesome-omni-ski
   - `dist/`: artefatti generati (catalog.json, catalog.db, manifests, archives) committati di proposito
 - **Flusso dati**: `SKILL.md` → `validate_skills.py` (metadata/score) → index/catalog → `dist/` → 4 superfici runtime (CLI, HTTP API, MCP, A2A) [VERIFICATO: `docs/ARCHITECTURE.md` §2]
 - **Comandi build/test** [VERIFICATO: `package.json`, `.github/workflows/validate.yml` @`c3af0048b70a`]: `npm ci`, `npm run build`, `npm test` (= test:legacy + test:unit + test:e2e), `npm run validate` (solo sandbox)
-- **Confini / cosa NON toccare**: `dist/`, `metadata.json`, `skills_index.json`, tabelle generate nei README (rigenerati da `npm run build`/`docs:render`); tutto upstream (fork 0/0 con `diegosouzapw/awesome-omni-skills` [VERIFICATO: API compare 2026-10-16]); install skill solo via CSG
+- **Confini / cosa NON toccare**: `dist/`, `metadata.json`, `skills_index.json`, tabelle generate nei README (rigenerati da `npm run build`/`docs:render`); tutto upstream (fork di `diegosouzapw/awesome-omni-skills`; unico file locale: `CLAUDE.md` [VERIFICATO: API compare 2026-10-18]); install skill solo via CSG
 - **UI / design**: N/A come prodotto (CLI/TUI e server); IGNOTO se esiste UI web
 - **Glossario**: *skill* (`SKILL.md` playbook) · *skills_omni* (derivato curato) · *catalog-core* · *superficie* (CLI/API/MCP/A2A) · *bundle* · *A2A* (Agent-to-Agent)
 - IGNOTO: 1 campo (UI web)
